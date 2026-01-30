@@ -23,7 +23,10 @@ function App() {
     const [assessorName, setAssessorName] = useState('');
     const [email, setEmail] = useState('');
     const [logo, setLogo] = useState<string | null>(null);
-    const [date, setDate] = useState<string>(new Date().toISOString().split('T')[0]);
+    const [date, setDate] = useState<string>(() => {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    });
     const [currentView, setCurrentView] = useState<'main' | 'detail' | 'about'>('main');
     const [profileActiveTab, setProfileActiveTab] = useState<'Assets' | 'Threats' | 'Controls' | 'Scenarios' | 'Threat_Control_Map'>('Assets');
 
