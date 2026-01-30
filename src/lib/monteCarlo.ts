@@ -103,7 +103,7 @@ export const runSimulation = (
         }, 1);
 
         const baseFreq = scenario.Frequency || 0;
-        const adjustedFreq = baseFreq * residualRiskFactor;
+        // const adjustedFreq = baseFreq * residualRiskFactor; // Unused
 
         // Note: For simulation, we usually sample the Frequency first if it is a distribution?
         // Or do we just use the Mean Frequency?

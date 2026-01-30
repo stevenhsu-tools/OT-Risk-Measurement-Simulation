@@ -16,7 +16,7 @@ export const exportPDF = (
     sectionData: SectionData,
     metrics: AggregatedMetrics,
     results: SimulationResult | null,
-    selectedScenarios: Scenario[], // For list
+    _selectedScenarios: Scenario[], // For list (Unused)
     chartImages: string[] = []
 ) => {
     const doc = new jsPDF();

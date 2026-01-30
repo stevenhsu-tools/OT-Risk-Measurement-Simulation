@@ -40,9 +40,7 @@ export const calculateAggregatedMetrics = (
     let totalEALML = 0;
     let totalEALMax = 0;
 
-    let totalEventsMin = 0; // For weighting Avg Loss
-    let totalEventsML = 0;
-    let totalEventsMax = 0;
+    // Removed unused event counters
 
     selectedScenarios.forEach(scenario => {
         // Determine controls affecting this scenario (via ThreatID)
@@ -112,7 +110,7 @@ export const calculateAggregatedMetrics = (
         // Let's standardise: Use 'Frequency' as ML. 
 
         const baseFreq = scenario.Frequency || 0;
-        const tef = baseFreq * residualRiskFactor;
+        // const tef = baseFreq * residualRiskFactor; // Unused
 
         // For Min/Max TEF, we might not have data in simple columns. 
         // Let's simpler assumption: TEF is a single point estimate for pre-calc cards, 
@@ -120,7 +118,7 @@ export const calculateAggregatedMetrics = (
         // Usually PERT is on LOSS. Poisson is on Frequency.
         // "Aggregated Adjusted TEF: Min, ML, Max" -> Suggests uncertainty in frequency.
         // If input lacks it, return same value.
-        const diff = (scenario.FrequencyMax || baseFreq) - (scenario.FrequencyMin || baseFreq);
+        // const diff = (scenario.FrequencyMax || baseFreq) - (scenario.FrequencyMin || baseFreq); // Unused
         // If diff is 0, use single value.
 
         // TEF Min
@@ -146,7 +144,7 @@ export const calculateAggregatedMetrics = (
 
         // Expected Annual Loss for this scenario = TEF * Loss(Mean of PERT)
         // PERT Mean = (Min + 4*ML + Max) / 6
-        const pertMeanLoss = (lossMin + 4 * lossML + lossMax) / 6;
+        // const pertMeanLoss = (lossMin + 4 * lossML + lossMax) / 6; // Unused
 
         // EAL
         // Wait, the card asks for "Expected Annual Loss: Min, ML, Max".
