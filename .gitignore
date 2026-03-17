@@ -119,3 +119,4 @@ dist
 Reference/
 *.xlsx
 *.xls
+.DS_Store
