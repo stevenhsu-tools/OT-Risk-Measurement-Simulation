@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shield Base -->
+  <path d="M32 4 C46 4, 56 11, 56 22 C56 42, 32 58, 32 60 C32 60, 8 42, 8 22 C8 11, 18 4, 32 4 Z" 
+        fill="url(#shieldGrad)" stroke="#38BDF8" stroke-width="2.5" stroke-linejoin="round" />
+
+  <!-- OT Monogram -->
+  <text x="32" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">OT</text>
+
+  <!-- Risk / Simulation Telemetry Graph -->
+  <path d="M18 43 L26 38 L34 44 L46 34" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Network Nodes -->
+  <circle cx="18" cy="43" r="2.5" fill="#38BDF8" />
+  <circle cx="26" cy="38" r="2.5" fill="#38BDF8" />
+  <circle cx="34" cy="44" r="2.5" fill="#F59E0B" />
+  <circle cx="46" cy="34" r="2.5" fill="#F59E0B" />
+</svg>

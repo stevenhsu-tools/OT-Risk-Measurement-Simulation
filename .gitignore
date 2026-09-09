@@ -120,3 +120,6 @@ Reference/
 *.xlsx
 *.xls
 .DS_Store
+
+# Disposable/scratch working files
+.tmp/
