@@ -65,8 +65,8 @@ export function SelectionList({
         <div className={cn("bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col h-[500px]", className)}>
             <div className="p-4 border-b border-gray-100">
                 <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold text-gray-800">{title}</h3>
-                    <span className="text-xs font-medium px-2 py-1 bg-blue-50 text-blue-700 rounded-full">
+                    <h3 className="font-semibold text-gray-800 text-xs">{title}</h3>
+                    <span className="text-[11px] font-medium px-2 py-1 bg-blue-50 text-blue-700 rounded-full">
                         {selectedIds.length} Selected
                     </span>
                 </div>
@@ -78,14 +78,14 @@ export function SelectionList({
                         placeholder="Search..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full pl-9 pr-3 py-2 text-xs border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                 </div>
 
                 <div className="flex items-center space-x-2">
                     <button
                         onClick={handleSelectAll}
-                        className="flex items-center space-x-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                        className="flex items-center space-x-2 text-xs text-gray-600 hover:text-gray-900 transition-colors"
                     >
                         {allSelected ? (
                             <CheckSquare className="w-4 h-4 text-blue-600" />
@@ -99,14 +99,14 @@ export function SelectionList({
 
             <div className="flex-1 overflow-y-auto p-2 space-y-1">
                 {filteredItems.length === 0 ? (
-                    <div className="text-center py-8 text-gray-400 text-sm">No items found</div>
+                    <div className="text-center py-8 text-gray-400 text-xs">No items found</div>
                 ) : (
                     filteredItems.map(item => (
                         <div
                             key={item.id}
                             onClick={() => handleToggle(item.id)}
                             className={cn(
-                                "group flex items-start space-x-3 p-3 rounded-md cursor-pointer transition-colors text-sm border-l-4",
+                                "group flex items-start space-x-3 p-3 rounded-md cursor-pointer transition-colors text-xs border-l-4",
                                 selectedIds.includes(item.id)
                                     ? "bg-blue-50/50 hover:bg-blue-50 border-transparent"
                                     : relatedIds.includes(item.id)

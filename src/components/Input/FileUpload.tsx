@@ -2,38 +2,36 @@ import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FileSpreadsheet } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { parseRiskProfile } from '@/lib/excel';
 import { RiskProfile } from '@/lib/types';
 
 interface FileUploadProps {
     onDataLoaded: (data: RiskProfile) => void;
+    parseFile: (file: File) => Promise<RiskProfile>;
+    accept: Record<string, string[]>;
+    label: string;
     className?: string;
     onError?: (error: string) => void;
 }
 
-export function FileUpload({ onDataLoaded, className, onError }: FileUploadProps) {
+export function FileUpload({ onDataLoaded, parseFile, accept, label, className, onError }: FileUploadProps) {
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
         const file = acceptedFiles[0];
         if (!file) return;
 
-        // Clear previous errors
         onError?.('');
 
         try {
-            const data = await parseRiskProfile(file);
+            const data = await parseFile(file);
             onDataLoaded(data);
         } catch (err: any) {
             console.error(err);
-            onError?.(err.message || "Failed to parse Excel file");
+            onError?.(err.message || 'Failed to parse file');
         }
-    }, [onDataLoaded, onError]);
+    }, [onDataLoaded, onError, parseFile]);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
-        accept: {
-            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx'],
-            'application/vnd.ms-excel': ['.xls']
-        },
+        accept,
         maxFiles: 1
     });
 
@@ -51,10 +49,10 @@ export function FileUpload({ onDataLoaded, className, onError }: FileUploadProps
                 <FileSpreadsheet className={cn("w-12 h-12", isDragActive ? "text-blue-500" : "text-gray-400")} />
                 <div className="space-y-1">
                     <p className="text-sm font-medium text-gray-700">
-                        {isDragActive ? "Drop the file here" : "Upload Risk Assessment Profile"}
+                        {isDragActive ? "Drop the file here" : label}
                     </p>
                     <p className="text-xs text-gray-500">
-                        Drag and drop an Excel file, or click to browse
+                        Drag and drop, or click to browse
                     </p>
                 </div>
             </div>
